@@ -1,29 +1,49 @@
 <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-  <div class="form-group">
-    <label for="nome">Nome</label>
-    <input type="text"
-           class="form-control" 
-           id="nome" 
-           placeholder="Nome" 
-           name="nome" 
-           [(ngModel)]="usuario.nome"
-           #nome
-           required>
-  </div>
-<div>
-  {{nome.className}}
-</div>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email"
-           class="form-control" 
-           id="email" 
-           aria-describedby="emailHelp" 
-           name="email" 
-           placeholder="nome@gmail.com" 
-           [(ngModel)]="usuario.email"
-           required email>
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text"
+            class="form-control" 
+            [class.is-invalid]="nome.invalid && nome.touched" 
+            [class.is-valid]="nome.valid && nome.touched" 
+            id="nome"
+            placeholder="Nome" 
+            name="nome" 
+            [(ngModel)]="usuario.nome" 
+            #nome="ngModel" 
+            required>
+      <div class="invalid-feedback">
+        Campo obrigatório!
+      </div>
+      <div class="valid-feedback">
+        Its ok!
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" 
+            class="form-control"
+            [ngClass]="{
+                        'is-invalid': email.invalid && email.touched, 
+                        'is-valid':email.valid && email.touched
+                      }" 
+            id="email" 
+            aria-describedby="emailHelp" 
+            name="email"
+            placeholder="nome@gmail.com" 
+            [(ngModel)]="usuario.email" 
+            #email="ngModel" 
+            required email>
+      <div class="invalid-feedback">
+        Campo obrigatório!
+      </div>
+      <div class="valid-feedback">
+        Its ok!
+      </div>
+    </div>
+  <div>
+    {{email.className}}
   </div>
 
-  <button type="submit" class="btn btn-primary">Enviar</button>
+  <button type="submit" [disabled]="f.invalid" class="btn btn-primary">Enviar</button>
 </form>
