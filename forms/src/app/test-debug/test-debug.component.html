@@ -1,0 +1,14 @@
+<div *ngIf="variavelInputProperty" style="margin-top: 20px;border: outset 1px; background-color:rgb(223, 219, 219)">
+  <div>
+    Detalhes do form
+  </div>
+  <pre>
+      Form válido: {{ variavelInputProperty.valid }}
+  </pre>
+  <pre>
+      Form submetido: {{ variavelInputProperty.submitted }}
+  </pre>
+  <pre>
+      Form válido: {{ variavelInputProperty.value | json }}
+  </pre>
+</div>

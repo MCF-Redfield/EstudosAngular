@@ -41,9 +41,7 @@
         Its ok!
       </div>
     </div>
-  <div>
-    {{email.className}}
-  </div>
 
   <button type="submit" [disabled]="f.invalid" class="btn btn-primary">Enviar</button>
 </form>
+<app-test-debug [variavelInputProperty]="f"></app-test-debug>
