@@ -1,46 +1,194 @@
 <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-    <div class="form-group">
-      <label for="nome">Nome</label>
-      <input type="text"
-            class="form-control" 
-            [class.is-invalid]="nome.invalid && nome.touched" 
-            [class.is-valid]="nome.valid && nome.touched" 
-            id="nome"
-            placeholder="Nome" 
-            name="nome" 
-            [(ngModel)]="usuario.nome" 
-            #nome="ngModel" 
-            required>
-      <div class="invalid-feedback">
-        Campo obrigatório!
+    <!--FormGroup Nome-->
+    <!--Campo Nome-->
+    <div class="form-group row">
+      <div class="col-sm-12">
+        <label for="nome">Nome</label>
       </div>
       <div class="valid-feedback">
-        Its ok!
+      <div class="col-sm-12">
+        <input type="text"
+              class="form-control" 
+              [class.is-invalid]="nome.invalid && nome.touched" 
+              [class.is-valid]="nome.valid && nome.touched" 
+              id="nome"
+              placeholder="Nome" 
+              name="nome" 
+              [(ngModel)]="usuario.nome" 
+              #nome="ngModel" 
+              required>
+        <div class="invalid-feedback">
+          Campo obrigatório!
+        </div>
+        <div class="valid-feedback">
+          Its ok!
+        </div>
       </div>
     </div>
-
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" 
-            class="form-control"
-            [ngClass]="{
-                        'is-invalid': email.invalid && email.touched, 
-                        'is-valid':email.valid && email.touched
-                      }" 
-            id="email" 
-            aria-describedby="emailHelp" 
-            name="email"
-            placeholder="nome@gmail.com" 
-            [(ngModel)]="usuario.email" 
-            #email="ngModel" 
-            required email>
-      <div class="invalid-feedback">
-        Campo obrigatório!
+    <!--FormGroup Email-->
+    <!--Campo Email-->
+    <div class="form-group row">
+      <div class="col-sm-12">
+        <label for="email">Email</label>
       </div>
-      <div class="valid-feedback">
-        Its ok!
+      <div class="col-sm-12">
+        <input type="email" 
+              class="form-control"
+              [ngClass]="{
+                          'is-invalid': email.invalid && email.touched, 
+                          'is-valid':email.valid && email.touched
+                        }" 
+              id="email" 
+              aria-describedby="emailHelp" 
+              name="email"
+              placeholder="nome@gmail.com" 
+              [(ngModel)]="usuario.email" 
+              #email="ngModel" 
+              required email>
+          <div class="invalid-feedback">
+            Campo obrigatório!
+          </div>
+          <div class="valid-feedback">
+            Its ok!
+          </div>
       </div>
     </div>
+    <!--FormGroup CEP/Numero/Complemento-->
+    <div class="form-group row">
+      <!--Campo CEP-->
+      <div class="col-md-3">
+        <label for="cep" class="control-label">CEP</label>
+        <input class="form-control"
+               [class.is-invalid]="cep.invalid && cep.touched" 
+               [class.is-valid]="cep.valid && cep.touched" 
+               type="text" 
+               name="cep" 
+               id="cep"
+               ngModel
+               #cep="ngModel"
+               required>
+        <div class="invalid-feedback">
+          CEP é obrigatório!
+        </div>
+        <div class="valid-feedback">
+          Its ok!
+        </div>
+      </div>
+      <!--Campo Numero-->
+      <div class="col-md-3">
+          <label for="numero" class="control-label">Número</label>
+          <input class="form-control"
+                 [class.is-invalid]="numero.invalid && numero.touched" 
+                 [class.is-valid]="numero.valid && numero.touched" 
+                 type="text" 
+                 name="numero" 
+                 id="numero"
+                 ngModel
+                 #numero="ngModel"
+                 required>
+          <div class="invalid-feedback">
+            Número é obrigatório!
+          </div>
+          <div class="valid-feedback">
+            Its ok!
+          </div>
+      </div>
+      <!--Campo Complemento-->
+      <div class="col-md-6">
+          <label for="complemento" class="control-label">Complemento</label>
+          <input class="form-control"
+                 type="text" 
+                 name="complemento" 
+                 id="complemento"
+                 ngModel
+                 #complemento="ngModel">
+      </div>
+    </div>
+    <!--FormGroup Rua-->
+    <!--Campo Rua-->
+    <div class="form-group row">
+        <div class="col-md-12">
+          <label for="rua">Rua</label>
+        </div>
+        <div class="col-sm-12">
+          <input type="text"
+                class="form-control" 
+                [class.is-invalid]="rua.invalid && rua.touched" 
+                [class.is-valid]="rua.valid && rua.touched" 
+                id="rua"
+                name="rua" 
+                [(ngModel)]="usuario.rua" 
+                #rua="ngModel" 
+                required>
+          <div class="invalid-feedback">
+            Campo obrigatório!
+          </div>
+          <div class="valid-feedback">
+            Its ok!
+          </div>
+        </div>
+    </div>
+    <!--FormGroup Bairro/Cidade/Estado-->
+    <div class="form-group row">
+        <!--Campo Bairro-->
+        <div class="col-md-5">
+          <label for="bairro" class="control-label">Bairro</label>
+          <input class="form-control"
+                 [class.is-invalid]="bairro.invalid && bairro.touched" 
+                 [class.is-valid]="bairro.valid && bairro.touched" 
+                 type="text" 
+                 name="bairro" 
+                 id="bairro"
+                 ngModel
+                 #bairro="ngModel"
+                 required>
+          <div class="invalid-feedback">
+            Bairro é obrigatório!
+          </div>
+          <div class="valid-feedback">
+            Its ok!
+          </div>
+        </div>
+        <!--Campo Cidade-->
+        <div class="col-md-4">
+            <label for="cidade" class="control-label">Cidade</label>
+            <input class="form-control"
+                   [class.is-invalid]="cidade.invalid && cidade.touched" 
+                   [class.is-valid]="cidade.valid && cidade.touched" 
+                   type="text" 
+                   name="cidade" 
+                   id="cidade"
+                   ngModel
+                   #cidade="ngModel"
+                   required>
+            <div class="invalid-feedback">
+              Cidade é obrigatório!
+            </div>
+            <div class="valid-feedback">
+              Its ok!
+            </div>
+        </div>
+        <!--Campo Estado-->
+        <div class="col-md-3">
+            <label for="estado" class="control-label">Estado</label>
+            <input class="form-control"
+                   [class.is-invalid]="estado.invalid && estado.touched" 
+                   [class.is-valid]="estado.valid && estado.touched" 
+                   type="text" 
+                   name="estado" 
+                   id="estado"
+                   ngModel
+                   #estado="ngModel"
+                   required>
+            <div class="invalid-feedback">
+              Estado é obrigatório!
+            </div>
+            <div class="valid-feedback">
+              Its ok!
+            </div>
+        </div>
+    </div>
+      
 
   <button type="submit" [disabled]="f.invalid" class="btn btn-primary">Enviar</button>
 </form>
