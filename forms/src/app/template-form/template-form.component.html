@@ -5,7 +5,6 @@
       <div class="col-sm-12">
         <label for="nome">Nome</label>
       </div>
-      <div class="valid-feedback">
       <div class="col-sm-12">
         <input type="text"
               class="form-control" 
@@ -54,13 +53,12 @@
       </div>
     </div>
     <!--FormGroup CEP/Numero/Complemento-->
-    <div class="form-group row">
+    <div class="form-group row">  
       <!--Campo CEP-->
       <div class="col-md-3">
         <label for="cep" class="control-label">CEP</label>
         <input class="form-control"
-               [class.is-invalid]="cep.invalid && cep.touched" 
-               [class.is-valid]="cep.valid && cep.touched" 
+               [ngClass]="aplicaCssErro(cep)"
                type="text" 
                name="cep" 
                id="cep"
@@ -78,8 +76,7 @@
       <div class="col-md-3">
           <label for="numero" class="control-label">Número</label>
           <input class="form-control"
-                 [class.is-invalid]="numero.invalid && numero.touched" 
-                 [class.is-valid]="numero.valid && numero.touched" 
+                 [ngClass]="aplicaCssErro(numero)"
                  type="text" 
                  name="numero" 
                  id="numero"
@@ -113,8 +110,7 @@
         <div class="col-sm-12">
           <input type="text"
                 class="form-control" 
-                [class.is-invalid]="rua.invalid && rua.touched" 
-                [class.is-valid]="rua.valid && rua.touched" 
+                [ngClass]="aplicaCssErro(rua)"
                 id="rua"
                 name="rua" 
                 [(ngModel)]="usuario.rua" 
@@ -134,8 +130,7 @@
         <div class="col-md-5">
           <label for="bairro" class="control-label">Bairro</label>
           <input class="form-control"
-                 [class.is-invalid]="bairro.invalid && bairro.touched" 
-                 [class.is-valid]="bairro.valid && bairro.touched" 
+                 [ngClass]="aplicaCssErro(bairro)"
                  type="text" 
                  name="bairro" 
                  id="bairro"
@@ -153,8 +148,7 @@
         <div class="col-md-4">
             <label for="cidade" class="control-label">Cidade</label>
             <input class="form-control"
-                   [class.is-invalid]="cidade.invalid && cidade.touched" 
-                   [class.is-valid]="cidade.valid && cidade.touched" 
+                   [ngClass]="aplicaCssErro(cidade)"
                    type="text" 
                    name="cidade" 
                    id="cidade"
@@ -172,8 +166,7 @@
         <div class="col-md-3">
             <label for="estado" class="control-label">Estado</label>
             <input class="form-control"
-                   [class.is-invalid]="estado.invalid && estado.touched" 
-                   [class.is-valid]="estado.valid && estado.touched" 
+                   [ngClass]="aplicaCssErro(estado)"
                    type="text" 
                    name="estado" 
                    id="estado"
