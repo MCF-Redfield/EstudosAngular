@@ -53,11 +53,12 @@
       </div>
     </div>
     <!--FormGroup CEP/Numero/Complemento-->
-    <div class="form-group row">  
+    <div class="form-group row" ngModelGroup="endereco">  
       <!--Campo CEP-->
       <div class="col-md-3">
         <label for="cep" class="control-label">CEP</label>
         <input class="form-control"
+               (blur)="consultaCEP($event.target.value,f)"
                [ngClass]="aplicaCssErro(cep)"
                type="text" 
                name="cep" 
@@ -103,7 +104,7 @@
     </div>
     <!--FormGroup Rua-->
     <!--Campo Rua-->
-    <div class="form-group row">
+    <div class="form-group row" ngModelGroup="endereco">
         <div class="col-md-12">
           <label for="rua">Rua</label>
         </div>
@@ -113,7 +114,7 @@
                 [ngClass]="aplicaCssErro(rua)"
                 id="rua"
                 name="rua" 
-                [(ngModel)]="usuario.rua" 
+                ngModel 
                 #rua="ngModel" 
                 required>
           <div class="invalid-feedback">
@@ -125,7 +126,7 @@
         </div>
     </div>
     <!--FormGroup Bairro/Cidade/Estado-->
-    <div class="form-group row">
+    <div class="form-group row" ngModelGroup="endereco">
         <!--Campo Bairro-->
         <div class="col-md-5">
           <label for="bairro" class="control-label">Bairro</label>

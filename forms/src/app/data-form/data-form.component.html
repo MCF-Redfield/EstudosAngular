@@ -1,3 +1,160 @@
-<p>
-  data-form works!
-</p>
+<form class="form-horizontal" [formGroup]="formulario" (ngSubmit)="onSubmit()" >
+    <!--FormGroup Nome-->
+    <!--Campo Nome-->
+    <div class="form-group row" >
+      <div class="col-sm-12">
+        <label for="nome">Nome</label>
+      </div>
+      <div class="col-sm-12">
+        <input type="text"
+              [class.is-invalid]="formulario.get('nome').invalid && formulario.get('nome').touched" 
+              [class.is-valid]="formulario.controls['nome'].valid && formulario.controls['nome'].touched" 
+              class="form-control" 
+              id="nome"
+              placeholder="Nome" 
+              formControlName="nome">
+        <div class="invalid-feedback">
+          Campo obrigatório!
+        </div>
+        <div class="valid-feedback">
+          Its ok!
+        </div>
+      </div>
+    </div>
+    <!--FormGroup Email-->
+    <!--Campo Email-->
+    <div class="form-group row">
+      <div class="col-sm-12">
+        <label for="email">Email</label>
+      </div>
+      <div class="col-sm-12">
+        <input class="form-control"
+              type="email" 
+              [ngClass]="aplicaCssFeedback('email')"
+              id="email" 
+              aria-describedby="emailHelp" 
+              formControlName="email"
+              placeholder="nome@gmail.com">
+          <div class="invalid-feedback">
+            Campo obrigatório!
+          </div>
+          <div class="valid-feedback">
+            Its ok!
+          </div>
+      </div>
+    </div>
+    <!--FormGroup CEP/Numero/Complemento-->
+    <div class="form-group row" formGroupName="endereco">  
+      <!--Campo CEP-->
+      <div class="col-md-3">
+        <label for="cep" class="control-label">CEP</label>
+        <input class="form-control"
+               [ngClass]="aplicaCssFeedback('endereco.cep')"
+               type="text"
+               id="cep"
+               formControlName="cep"
+               (blur)="consultaCEP()" >
+        <div class="invalid-feedback">
+          CEP é obrigatório!
+        </div>
+        <div class="valid-feedback">
+          Its ok!
+        </div>
+      </div>
+      <!--Campo Numero-->
+      <div class="col-md-3">
+          <label for="numero" class="control-label">Número</label>
+          <input class="form-control"
+                 [ngClass]="aplicaCssFeedback('endereco.numero')"
+                 type="text"
+                 id="numero"
+                 formControlName="numero">
+          <div class="invalid-feedback">
+            Número é obrigatório!
+          </div>
+          <div class="valid-feedback">
+            Its ok!
+          </div>
+      </div>
+      <!--Campo Complemento-->
+      <div class="col-md-6">
+          <label for="complemento" class="control-label">Complemento</label>
+          <input class="form-control"
+                 type="text" 
+                 id="complemento"
+                 formControlName="complemento">
+      </div>
+    </div>
+    <!--FormGroup Rua-->
+    <!--Campo Rua-->
+    <div class="form-group row" formGroupName="endereco">
+        <div class="col-md-12">
+          <label for="rua">Rua</label>
+        </div>
+        <div class="col-sm-12">
+          <input type="text"
+                class="form-control" 
+                [ngClass]="aplicaCssFeedback('endereco.rua')"
+                id="rua"
+                formControlName="rua">
+          <div class="invalid-feedback">
+            Campo obrigatório!
+          </div>
+          <div class="valid-feedback">
+            Its ok!
+          </div>
+        </div>
+    </div>
+    <!--FormGroup Bairro/Cidade/Estado-->
+    <div class="form-group row" formGroupName="endereco">
+        <!--Campo Bairro-->
+        <div class="col-md-5">
+          <label for="bairro" class="control-label">Bairro</label>
+          <input class="form-control"
+                 [ngClass]="aplicaCssFeedback('endereco.bairro')"
+                 type="text" 
+                 id="bairro"
+                 formControlName="bairro">
+          <div class="invalid-feedback">
+            Bairro é obrigatório!
+          </div>
+          <div class="valid-feedback">
+            Its ok!
+          </div>
+        </div>
+        <!--Campo Cidade-->
+        <div class="col-md-4">
+            <label for="cidade" class="control-label">Cidade</label>
+            <input class="form-control"
+                   [ngClass]="aplicaCssFeedback('endereco.cidade')"
+                   type="text" 
+                   id="cidade"
+                   formControlName="cidade">
+            <div class="invalid-feedback">
+              Cidade é obrigatório!
+            </div>
+            <div class="valid-feedback">
+              Its ok!
+            </div>
+        </div>
+        <!--Campo Estado-->
+        <div class="col-md-3">
+            <label for="estado" class="control-label">Estado</label>
+            <input class="form-control"
+                   [ngClass]="aplicaCssFeedback('endereco.estado')"
+                   type="text"  
+                   id="estado"
+                   formControlName="estado">
+            <div class="invalid-feedback">
+              Estado é obrigatório!
+            </div>
+            <div class="valid-feedback">
+              Its ok!
+            </div>
+        </div>
+    </div>
+    
+  <button style="margin: 2px;" type="submit" class="btn btn-primary" >Enviar</button>
+  <button style="margin: 2px;" type="button" class="btn btn-danger" (click)="resetForm()">Cancelar</button>
+</form>
+<app-test-debug [variavelInputProperty]="formulario"></app-test-debug>
