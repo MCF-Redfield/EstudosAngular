@@ -15,8 +15,5 @@ import { HttpClientModule } from '@angular/common/http';
   exports: [
     TestDebugComponent
   ],
-  providers: [
-    DropdownService
-  ]
 })
 export class SharedModule { }

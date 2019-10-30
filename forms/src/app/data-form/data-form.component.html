@@ -140,11 +140,13 @@
         <!--Campo Estado-->
         <div class="col-md-3">
             <label for="estado" class="control-label">Estado</label>
-            <input class="form-control"
+            <select class="form-control"
                    [ngClass]="aplicaCssFeedback('endereco.estado')"
                    type="text"  
                    id="estado"
                    formControlName="estado">
+            <option *ngFor="let estado of estados | async" [value]="estado.sigla">{{estado.nome}}</option>
+            </select>
             <div class="invalid-feedback">
               Estado é obrigatório!
             </div>
@@ -153,8 +155,82 @@
             </div>
         </div>
     </div>
+    <!--FormGroup Cargo/Tecnologias/Newsletter-->
+    <div class="form-group row">
+      <!--Select Cargos-->
+      <div class="col-md-4">
+        <label for="cargo" class="control-label">Cargo</label>
+        <select class="form-control"
+                id="cargo"
+                formControlName="cargo"
+                [compareWith]="compararCargos">
+          <option *ngFor="let cargo of cargos" [ngValue]="cargo">{{cargo.desc}}</option>
+        </select>
+      </div>    
+      <!--Select Tecnologias-->
+      <div class="col-md-4">
+        <label for="tecnologia" class="control-label">Tecnologias</label>
+        <select multiple class="form-control"
+                id="tecnologias"
+                formControlName="tecnologias">
+          <option *ngFor="let tecnologia of tecnologias" [value]="tecnologia.nome">{{tecnologia.desc}}</option>
+        </select>
+      </div>
+      <!--Radio Newsletter-->
+      <div class="col-md-3">
+        <label for="newsletter" class="control-label">Newsletter</label>
+        <div class="row" id="newsletter">
+          <div class="col-sm-4" *ngFor="let opcaoNewsletter of newsletterOpcoes">
+            <label class="radio-inline">
+              <input type="radio"
+                      [value]="opcaoNewsletter.nome"
+                      formControlName="newsletter">
+                      {{opcaoNewsletter.desc}}
+            </label>
+          </div>
+        </div>
+      </div>       
+    </div>
+    <!--FormGroup Termos/Frameworks-->
+    <div class="form-group row">
+      <!--Checkbox Acordo-->
+      <div class="form-check col-md-3">
+          <input class="form-check-input"
+                 type="checkbox"
+                 id="termos" 
+                 formControlName="termos" 
+                 [ngClass]="aplicaCssFeedback2('termos')">
+          <label for="termos" class="form-check-label">Aceito os termos.</label>
+          <div class="invalid-feedback">
+            Por favor, aceite os termos!
+          </div>
+        </div>
+      <!--Checkbox Frameworks-->
+      <div class="form-check col-md-3">
+        <label for="frameworks">Frameworks</label>
+          <!--div que envolve todos os checkboxes-->
+          <div id="frameworks" class="row">
+            <!--div que envolve 1 ÚNICO checkbox-->
+            <div class="checkbox col-sm-4"
+                 formArrayName="frameworks"
+                 *ngFor="let framework of formulario.get('frameworks').controls;
+                         let k = index;">
+                 <input class="form-check-input"
+                 [ngClass]="aplicaCssFeedback3('frameworks')"
+                 type="checkbox"
+                 [formControlName]="k"> {{frameworks[k]}}<!--frameworks eh o q estah no .component-->
+                 <label class="form-check-label checkbox-inline"></label>                                                            
+              <div *ngIf="k==(formulario.get('frameworks').value.length)-1" class="invalid-feedback">
+                Selecione ao menos 1!
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
     
   <button style="margin: 2px;" type="submit" class="btn btn-primary" >Enviar</button>
   <button style="margin: 2px;" type="button" class="btn btn-danger" (click)="resetForm()">Cancelar</button>
+  <button style="margin: 2px;" type="button" class="btn btn-info" (click)="setarCargo()">Cargo</button>
+  <button style="margin: 2px;" type="button" class="btn btn-info" (click)="setarTecnologias()">Tecnologias</button>
 </form>
 <app-test-debug [variavelInputProperty]="formulario"></app-test-debug>

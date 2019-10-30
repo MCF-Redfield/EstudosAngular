@@ -16,4 +16,56 @@ export class DropdownService {
       .pipe(map(res => res));//busco o json,q não vem direto com json, e faço a conversão
   }
 
+  getCargos()
+  {
+    return[
+      {
+        nome: 'Dev',
+        nivel: 'Junior',
+        desc: 'Dev Junior'
+      },
+      {
+        nome: 'Dev',
+        nivel: 'Pleno',
+        desc: 'Dev Pleno'
+      },
+      {
+        nome: 'Dev',
+        nivel: 'Senior',
+        desc: 'Dev Senior'
+      },
+    ]
+  }
+
+  getTecnologias()
+  {
+    return[
+      {
+        nome: 'java',
+        desc: 'Java'
+      },
+      {
+        nome: 'javascript',
+        desc: 'Javascript'
+      },
+      {
+        nome: 'angular',
+        desc: 'Angular'
+      }
+    ]
+  }
+
+  getNewsletter()
+  {
+    return [
+      {
+        nome: 's',
+        desc: 'Sim'
+      },
+      {
+        nome: 'n',
+        desc: 'Não'
+      }
+    ]
+  }
 }
