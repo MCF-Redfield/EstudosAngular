@@ -1,0 +1,13 @@
+<div class="col-sm-12">
+  <label [attr.for]="id">{{label}}</label>
+  <input class="form-control"
+        [type]="type" 
+        [ngClass]="classeCss"
+        [id]="id"
+        [readonly]="!!isReadOnly"
+        [(ngModel)]="value">
+    <app-error-msg [control]="control" [label]="label"></app-error-msg>
+    <div class="valid-feedback">
+      Its ok!
+    </div>
+</div>

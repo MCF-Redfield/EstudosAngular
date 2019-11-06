@@ -13,9 +13,7 @@
               id="nome"
               placeholder="Nome" 
               formControlName="nome">
-        <div class="invalid-feedback">
-          Campo obrigatório!
-        </div>
+        <app-error-msg [control]="formulario.get('nome')" label="Nome"></app-error-msg>
         <div class="valid-feedback">
           Its ok!
         </div>
@@ -24,7 +22,7 @@
     <!--FormGroup Email-->
     <!--Campo Email-->
     <div class="form-group row">
-      <div class="col-sm-12">
+      <!--div class="col-sm-12">
         <label for="email">Email</label>
       </div>
       <div class="col-sm-12">
@@ -35,9 +33,36 @@
               aria-describedby="emailHelp" 
               formControlName="email"
               placeholder="nome@gmail.com">
-          <div class="invalid-feedback">
-            Campo obrigatório!
+          <app-error-msg [control]="formulario.get('email')" label="Email"></app-error-msg>
+          <div class="valid-feedback">
+            Its ok!
           </div>
+      </div-->
+      <app-input-field class="col-sm-12"
+                       formControlName="email"
+                       [classeCss]="aplicaCssFeedback('email')"
+                       id="email"
+                       label="Email"
+                       type="email"
+                       [control]="formulario.get('email')">
+      </app-input-field>
+
+    </div>
+    <!--FormGroup ConfirmarEmail-->
+    <!--Campo ConfirmarEmail-->
+    <div class="form-group row">
+      <div class="col-sm-12">
+        <label for="confirmarEmail">Confirmar Email</label>
+      </div>
+      <div class="col-sm-12">
+        <input class="form-control"
+              type="email" 
+              [ngClass]="aplicaCssFeedback('confirmarEmail')"
+              id="confirmarEmail" 
+              aria-describedby="emailHelp" 
+              formControlName="confirmarEmail"
+              placeholder="nome@gmail.com">
+          <app-error-msg [control]="formulario.get('confirmarEmail')" label="COnfirmarEmail"></app-error-msg>
           <div class="valid-feedback">
             Its ok!
           </div>
@@ -52,11 +77,8 @@
                [ngClass]="aplicaCssFeedback('endereco.cep')"
                type="text"
                id="cep"
-               formControlName="cep"
-               (blur)="consultaCEP()" >
-        <div class="invalid-feedback">
-          CEP é obrigatório!
-        </div>
+               formControlName="cep">
+        <app-error-msg [control]="formulario.get('endereco.cep')" label="CeP"></app-error-msg>
         <div class="valid-feedback">
           Its ok!
         </div>
@@ -69,9 +91,7 @@
                  type="text"
                  id="numero"
                  formControlName="numero">
-          <div class="invalid-feedback">
-            Número é obrigatório!
-          </div>
+          <app-error-msg [control]="formulario.get('endereco.numero')" label="Nome"></app-error-msg>
           <div class="valid-feedback">
             Its ok!
           </div>
@@ -216,12 +236,12 @@
                  *ngFor="let framework of formulario.get('frameworks').controls;
                          let k = index;">
                  <input class="form-check-input"
-                 [ngClass]="aplicaCssFeedback3('frameworks')"
+                 [ngClass]="aplicaCssFeedback('frameworks')"
                  type="checkbox"
                  [formControlName]="k"> {{frameworks[k]}}<!--frameworks eh o q estah no .component-->
                  <label class="form-check-label checkbox-inline"></label>                                                            
               <div *ngIf="k==(formulario.get('frameworks').value.length)-1" class="invalid-feedback">
-                Selecione ao menos 1!
+                Selecione ao menos 1 framework!
               </div>
             </div>
           </div>
